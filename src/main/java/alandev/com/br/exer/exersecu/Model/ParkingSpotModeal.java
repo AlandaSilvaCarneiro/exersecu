@@ -10,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,28 +35,12 @@ public class ParkingSpotModeal implements Serializable {
     @Column(nullable = false, unique = true, length = 10)
     private String parkingSpotnumber;
 
-    @Column(nullable = false, unique = true, length = 7)
-    private String lincensePlateCar;
-
-    @Column(nullable = false, length = 70)
-    private String brandCar;
-
-    @Column(nullable = false, length = 70)
-    private String modelCar;
-
-    @Column(nullable = false, length = 70)
-    private String colorCar;
+    @OneToOne
+    private Car carparkingSpot;
 
     @Column(nullable = false)
     private LocalDateTime registretiondate;
 
-    @Column(nullable = false, length = 170)
-    private String responsiblename;
-
-    @Column(nullable = false, length = 30)
-    private String apartment;
-
-    @Column(nullable = false, length = 30)
-    private String block;
-
+    @OneToMany(mappedBy ="listparkingSpotModeal" )
+    private User responsa;
 }

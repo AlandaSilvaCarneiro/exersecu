@@ -1,5 +1,7 @@
 package alandev.com.br.exer.exersecu.Model.DTOs;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -9,27 +11,16 @@ import lombok.Data;
 @AllArgsConstructor
 public class DtoParkingSpot {
     @NotBlank
+    @UniqueElements
     private String parkingSpotNumber;
 
     @NotBlank
+    @UniqueElements
     @Size(max = 7)
     private String lincensePlateCar;
 
     @NotBlank
-    private String brandCar;
-
-    @NotBlank
-    private String colorCar;
-
-    @NotBlank
-    private String modelCar;
-
-    @NotBlank
-    private String apartment;
-
-
-    @NotBlank
-    private String block;
-
+    @UniqueElements
+    private String emailRespo;
 
 }
